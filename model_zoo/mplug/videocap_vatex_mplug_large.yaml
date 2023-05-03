@@ -1,0 +1,16 @@
+bert_config: './model_zoo/mplug/config_bert.json'
+image_res: 224
+vision_width: 1024
+distill: True
+clip_name: "ViT-L-14"
+k_test: 128
+eos: '[SEP]'
+bos: '[CLS]'
+prompt: 'a video of'
+use_checkpoint: true
+num_frm_test: 8
+min_length: 10
+max_length: 20
+beam_size: 3
+text_encoder: 'bert-base-uncased'
+text_decoder: 'bert-base-uncased'

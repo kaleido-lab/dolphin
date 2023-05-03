@@ -1,0 +1,175 @@
+model_zoos:
+  # Video Understanding
+  VideoCaptioning:
+    target: modules.mplug.VideoCaptioning
+    params:
+      device: cuda:0
+  ImageCaptioning:
+    target: modules.blip.ImageCaptioning
+    params:
+      device: cuda:1
+  
+  # Video Processing
+  MoviepyInterface:
+    target: modules.video_moviepy.MoviepyInterface
+  
+  Video2Canny:
+    target: modules.annotator.Video2Canny
+  Video2Pose:
+    target: modules.annotator.Video2Pose
+    params:
+      device: cuda:1
+  Video2Depth:
+    target: modules.annotator.Video2Depth
+    params:
+      device: cuda:1
+  
+  # Video Generation
+  CannyText2Video:
+    target: modules.text2video_zero.CannyText2Video
+    params:
+      device: cuda:2
+  PoseText2Video:
+    target: modules.text2video_zero.PoseText2Video
+    params:
+      device: cuda:2
+  DepthText2Video:
+    target: modules.text2video_zero.DepthText2Video
+    params:
+      device: cuda:2
+  VideoPix2Pix:
+    target: modules.text2video_zero.VideoPix2Pix
+    params:
+      device: cuda:2
+  
+  ModelscopeT2V:
+    target: modules.modelscope_t2v.ModelscopeT2V
+    params:
+      device: cuda:3
+  
+  # Audio Generation
+  Text2Audio:
+    target: modules.bark.Text2Audio
+
+tools:
+  # Video Understanding
+  # - name: Get Video Description
+  #   desc: "useful when you want to know what the video shows or describes. /
+  #     like: Can you tell me what the video tells about? /
+  #     The input to this tool should be a string, representing the video_path. "
+  #   instance: VideoCaptioning # corresponds to keys of model_zoos above
+  #   func: inference # func name of class
+    
+  # Video Processing
+  # MoviePy
+  - name: Get Video Subclip
+    desc: "useful when you want to capture a part of a video. /
+      like: extract a segment of this video from 10s to 25s. /
+      The input to this tool should be a string and two floating point numbers, /
+      respectively representing the path of the file and the starting and ending points of the fragment to be intercepted"
+    instance: MoviepyInterface
+    func: intercept_fragments
+  - name: Add Subtitles To Video
+    desc: "useful when you want to add subtitles to a video. /
+      like: add 'hello world' subtitles to this video. /
+      The input to this tool can be two strings, respectively representing the path of the file and the subtitle wanted to add to the video,
+      or a string and two floating point numbers and a string, respectively representing the path of the video and start time and duration of the subtitle and the text content of subtitle. /
+      You should use commas to separate different strings."
+    instance: MoviepyInterface
+    func: add_subtitles
+  - name: Concat Videos
+    desc: "useful when you want to concat several videos into a single video. /
+      like: Can you concat video1 and video2 together, or please concat these videos for me. /
+      The input to this tool should be a string representing the paths of the videos. You should use commas to separate different videos."
+    instance: MoviepyInterface
+    func: concat_videos
+  - name: Video Overlay
+    desc: "useful when you want to overlay the videos /
+      like: Can you help me overlay video1 and video2/
+      The input to this tool should be a string representing the paths of the files. /
+      You should use commas to separate different paths."
+    instance: MoviepyInterface
+    func: video_overlay
+  - name: Extract Audio From Video
+    desc: "useful when you want to extract the audio from a video /
+      like: Can you help me extract the audio from this video. /
+      The input to this tool should be a string, representing the path of the input video. /"
+    instance: MoviepyInterface
+    func: extract_audio
+  - name: Add Audio To Video
+    desc: "useful when you want to add an audio into a video /
+      like: Can you help me add this audio into this video, or add this music into the video. /
+      The input to this tool should be two strings, respectively representing the path of the video and the path of audio. /"
+    instance: MoviepyInterface
+    func: add_audio_to_video
+
+  # Preprocessing
+  - name: Edge Detection On Video
+    desc: "useful when you want to detect the edge of the video. /
+      like: detect the edges of this video, or canny detection on video, or perform edge detection on this video, or detect the canny video of this video.  /
+      The input to this tool should be a string, representing the video_path."
+    instance: Video2Canny
+    func: inference
+  - name: Pose Estimation On Video
+    desc: "useful when you want to estimate the pose of the video. /
+      like: estimate the pose of this video, or pose estimation on video, or perform pose estimation on this video, or estimate the pose of this video.  /
+      The input to this tool should be a string, representing the video_path."
+    instance: Video2Pose
+    func: inference
+  - name: Depth Estimation On Video
+    desc: "useful when you want to estimate the depth of the video. /
+      like: estimate the depth of this video, or depth estimation on video, or perform depth estimation on this video, or estimate the depth of this video.  /
+      The input to this tool should be a string, representing the video_path."
+    instance: Video2Depth
+    func: inference
+  
+  # Video Generation
+  - name: Generate Video Condition On Text
+    desc: "useful when you want to generate video based on text. /
+      like: can you generate a video based on the text 'A dog is playing in the garden.' /
+      The input to this tool should be a string, representing the content of the text."
+    instance: ModelscopeT2V
+    func: inference
+  
+  - name: Generate Video Condition On Canny Video
+    desc: "useful when you want to generate a new video from both the user description and a canny video. /
+      like: generate a new video of a object or something from this canny video, or can you generate a video based on the text 'A dog is playing in the garden.' and this edge video. /
+      The input to this tool should be a comma separated string of two, representing the video_path and the user description. "
+    instance: CannyText2Video
+    func: inference
+  
+  - name: Generate Video Condition On Pose Video
+    desc: "useful when you want to generate a new video from both the user description and a pose video. /
+      like: generate a new video of a human from this human pose video, or can you generate a video based on both the text 'A boy is playing basketball.' and this pose video. /
+      The input to this tool should be a comma separated string of two, representing the video_path and the user description. "
+    instance: PoseText2Video
+    func: inference
+
+  - name: Generate Video Condition On Depth Video
+    desc: "useful when you want to generate a new video from both the user description and a depth video. /
+      like: generate a new video of a object or something from this depth video, or can you generate a video based on the text 'A dog is playing in the garden.' and this depth video. /
+      The input to this tool should be a comma separated string of two, representing the video_path and the user description. "
+    instance: DepthText2Video
+    func: inference
+  
+  - name: Instruct Video Using Text
+    desc: "useful when you want to the style of the video to be like the text. /
+      like: like: make it look like a painting. or make it like a robot. /
+      The input to this tool should be a comma separated string of two, representing the video_path and the text. "
+    instance: VideoPix2Pix
+    func: inference
+
+  # Audio Generation
+  - name: Generate audio based on text
+    desc: "useful when you want to generate audio based on text. /
+      like: can you generate an audio based on the text 'Hello, my name is Suno. And, uh — and I like pizza. [laughs] But I also have other interests such as playing tic tac toe.' /
+      The input to this tool should be a string, representing the content of the text."
+    instance: Text2Audio
+    func: text2audio
+  
+  - name: Generate music audio based on text
+    desc: "useful when you want to generate music audio based on text. /
+      like: can you generate a music audio based on the text '♪ In the jungle, the mighty jungle, the lion barks tonight ♪' /
+      The input to this tool should be a string, representing the content of the text."
+    instance: Text2Audio
+    func: text2music

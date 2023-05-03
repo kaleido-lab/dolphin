@@ -1,0 +1,14 @@
+__pycache__/
+.DS_Store
+*.iml
+*.xml
+
+*.pth
+*.mp4
+*.tar
+*.pt
+*.bin
+*.ckpt
+
+video
+logs/
