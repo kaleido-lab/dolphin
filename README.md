@@ -12,7 +12,7 @@
     </br>
     <a href='https://lucassheng.github.io/' target='_blank'>Lu Sheng</a><sup>1</sup>&emsp;
     <a href='https://liuziwei7.github.io/' target='_blank'>Ziwei Liu</a><sup>2</sup>&emsp;
-    <a href='https://amandajshao.github.io/' target='_blank'>Jing Shao<sup>3</sup></a>
+    <a href='https://amandajshao.github.io/' target='_blank'>Jing Shao</a><sup>3</sup>
 </div>
 <div>
 <div align="center">
