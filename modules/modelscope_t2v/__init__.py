@@ -57,7 +57,7 @@ class ModelscopeT2V:
         video_path = generate_video_name_mp4()
         self.generate_video(
             prompt=inputs,
-            seed=0,
+            seed=-1,
             num_frames=16,
             num_inference_steps=25,
             out_file=video_path,
