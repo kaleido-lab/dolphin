@@ -1,8 +1,25 @@
+<p align="center" width="100%">
+<img src="https://user-images.githubusercontent.com/78398294/236116868-00801805-5cbf-40d1-89a1-f848a15b1deb.png"  width="80%" height="80%">
+</p>
+
+<div>
+<div align="center">
+    Zehuan Huang&emsp;
+    Haoran Feng&emsp;
+    Enshen Zhou&emsp;
+    Jiahua Lan&emsp;
+    Chongzhi Zhang&emsp;
+    </br>
+    <a href='https://lucassheng.github.io/' target='_blank'>Lu Sheng</a>&emsp;
+    <a href='https://liuziwei7.github.io/' target='_blank'>Ziwei Liu</a>&emsp;
+    <a href='https://amandajshao.github.io/' target='_blank'>Jing Shao</a>
+</div>
+<div>
+<div align="center">
+    Beihang University, Nanyang Technological University
+</div>
+
 # dolphin
-
-> TODO: page header
-
----
 
 > TODO: online demo
 
@@ -13,17 +30,18 @@
     <img src="https://img.shields.io/badge/GPU%20Demo-Open-green?logo=alibabacloud"> 
 </a>
 
-Dolphin is a general video interaction platform based on ChatGPT. Our team is trying to build a chatbot for video understanding, processing and generation.
+Dolphin is a general video interaction platform based on large language models. Our team is trying to build a chatbot for video understanding, processing and generation.
 
 We are continuously improving _dolphin_. Stay tuned for updates!
 
 ## Demo
 
-> TODO: Video
+[![Dolphin, a general video interaction platform based on LLMs, from BUAA & NTU](https://res.cloudinary.com/marcomontalbano/image/upload/v1683180108/video_to_markdown/images/youtube--IB1qrhVG94s-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://www.youtube.com/watch?v=IB1qrhVG94s "Dolphin, a general video interaction platform based on LLMs, from BUAA & NTU")
 
 ## Updates
 
 - 2023/05/04: Code release & Online Demo
+
   - Video understanding: Q&A about the video.
   - Video processing: Basic functions such as trimming video, adding subtitles, extracting audio, and adding audio using [moviepy](https://github.com/Zulko/moviepy). Video to pose/depth/canny also included.
   - Video generation: Text to video, pose/depth and text to video, and video pix2pix.
@@ -49,9 +67,9 @@ cd dolphin
 pip install -r requirements.txt
 ```
 
-To start _dolphin_, you can specify the GPU/CPU assignment by "--load", the parameter indicates which Video Foundation Model to use and where it will be loaded to. The model and device are separated by underline '_', while the different models are separated by comma ','. The available Video Foundation Models can be found in the following table or _configs/backends.yaml_.
+To start _dolphin_, you can specify the GPU/CPU assignment by `--load`, the parameter indicates which Video Foundation Model to use and where it will be loaded to. The model and device are separated by underline `_`, while the different models are separated by comma `,`. The available Video Foundation Models can be found in the following table or `configs/backends.yaml`.
 
-For example, if you want to load VideoCaptioning to cuda:0 and MoviepyInterface to cpu, you can use: "VideoCaptioning_cuda:0,MoviepyInterface_cpu".
+For example, if you want to load VideoCaptioning to cuda:0 and MoviepyInterface to cpu, you can use: `VideoCaptioning_cuda:0,MoviepyInterface_cpu`.
 
 Some starting commands are as follows.
 
@@ -84,6 +102,43 @@ python video_chatgpt.py
 | ModelscopeT2V | 6535 |
 | Text2Audio | 5797 |
 
+## How to expand
+
+Our project framework is highly extensible for adding new features, including support for more video foundation models and more large language models.
+
+For more video foundation models, you can add the inference code for new models under the `modules` directory. We recommend creating a new Python package for the new model within this directory and implementing the class in the package's `__init__.py` file (you can refer to `ModelscopeT2V` in modules/modelscope_t2v/init.py). Afterward, add the related information in `configs/backends.yaml`.
+
+<details>
+  <summary><b>Example: FaceText2Video</b></summary>
+
+Assuming you have now implemented a new video foundation model using facial keypoints and text descriptions to generate videos, follow these steps:
+
+1. Create a new package named `face2video` under the directory `modules`. In its `__init__.py` file, implement a class called `FaceText2Video`, which includes an initialization and an inference function. The desired effect should be that by importing `modules.face2video.FaceText2Video`, after instantiating an object, you can use the `inference` function to achieve the corresponding functionality.
+2. Add the import and function description in `configs/backends.yaml`. Details are as follows.
+
+```yaml
+model_zoos:
+  FaceText2Video:  # foundation model class
+    target: modules.face2video.FaceText2Video # path of the class in project
+    params: # params passed to the class
+      device: cuda:0
+tools:
+  # - name: tool name
+  #   desc: description about new tool
+  #   instance: keep the name consistent with the one in the model_zoos section mentioned above
+  #   func: inference function in foundation model class
+  - name: Generate Video Condition On Face Video
+    desc: "useful when you want to generate a new video from both the user description and a facial keypoints video. /
+      like: generate a new video of a human face from this human face video, or can you generate a video based on both the text 'A boy is playing basketball.' and this face video. /
+      The input to this tool should be a comma separated string of two, representing the video_path and the user description. "
+    instance: FaceText2Video
+    func: inference
+```
+
+</details>
+
+For more large language models, you can refer to `video_chatgpt.py`, and create a new file like `video_moss.py` or `video_stablelm.py` in the project root directory to implement support for other large language models.
+
 ## Acknowledgement
 
 We appreciate the open source of the following projects:
@@ -101,4 +156,4 @@ We appreciate the open source of the following projects:
 
 For help or issues using the _dolphin_, please submit a GitHub issue.
 
-> TODO: For other communications, please contact
+For other communications, please contact Zehuan Huang (huanngzh@gmail.com).
