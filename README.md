@@ -29,28 +29,31 @@
 <a src="https://img.shields.io/badge/GPU%20Demo-Open-green?logo=alibabacloud" href="">
     <img src="https://img.shields.io/badge/GPU%20Demo-Open-green?logo=alibabacloud"> 
 </a>
+<a src="https://img.shields.io/twitter/follow/kaleido_lab?style=social" href="https://twitter.com/kaleido_lab">
+  <img src="https://img.shields.io/twitter/follow/kaleido_lab?style=social">
+</a>
 
 Dolphin is a general video interaction platform based on large language models. Our team is trying to build a chatbot for video understanding, processing and generation.
 
-We are continuously improving _dolphin_. Stay tuned for updates!
+We are continuously improving 🐬 dolphin. Stay tuned for updates!
 
-## Demo
+## 📽️ Demo
 
 [![Dolphin, a general video interaction platform based on LLMs, from BUAA & NTU](https://res.cloudinary.com/marcomontalbano/image/upload/v1683180108/video_to_markdown/images/youtube--IB1qrhVG94s-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://www.youtube.com/watch?v=IB1qrhVG94s "Dolphin, a general video interaction platform based on LLMs, from BUAA & NTU")
 
-## Updates
+## 🔥 Updates
 
-- 2023/05/04: Code release & Online Demo
+- 2023/05/05: Code release & Online Demo
 
   - Video understanding: Q&A about the video.
   - Video processing: Basic functions such as trimming video, adding subtitles, extracting audio, and adding audio using [moviepy](https://github.com/Zulko/moviepy). Video to pose/depth/canny also included.
   - Video generation: Text to video, pose/depth and text to video, and video pix2pix.
 
-## Example
+## 💬 Example
 
 > TODO: example video
 
-## Quick Start
+## 🔨 Quick Start
 
 Prepare the project and environment:
 
@@ -67,7 +70,7 @@ cd dolphin
 pip install -r requirements.txt
 ```
 
-To start _dolphin_, you can specify the GPU/CPU assignment by `--load`, the parameter indicates which Video Foundation Model to use and where it will be loaded to. The model and device are separated by underline `_`, while the different models are separated by comma `,`. The available Video Foundation Models can be found in the following table or `configs/backends.yaml`.
+To start 🐬 dolphin, you can specify the GPU/CPU assignment by `--load`, the parameter indicates which Video Foundation Model to use and where it will be loaded to. The model and device are separated by underline `_`, while the different models are separated by comma `,`. The available Video Foundation Models can be found in the following table or `configs/backends.yaml`.
 
 For example, if you want to load VideoCaptioning to cuda:0 and MoviepyInterface to cpu, you can use: `VideoCaptioning_cuda:0,MoviepyInterface_cpu`.
 
@@ -85,7 +88,7 @@ python video_chatgpt.py --load "VideoCaptioning_cuda:0,ImageCaptioning_cuda:0,Mo
 python video_chatgpt.py
 ```
 
-## GPU memory usage
+## 💾 GPU memory usage
 
 | **Foundation Model** | **GPU Memory (MB)** |
 | - | - |
@@ -102,11 +105,11 @@ python video_chatgpt.py
 | ModelscopeT2V | 6535 |
 | Text2Audio | 5797 |
 
-## How to expand
+## 🛠️ How to expand
 
 Our project framework is highly extensible for adding new features, including support for more video foundation models and more large language models.
 
-For more video foundation models, you can add the inference code for new models under the `modules` directory. We recommend creating a new Python package for the new model within this directory and implementing the class in the package's `__init__.py` file (you can refer to `ModelscopeT2V` in modules/modelscope_t2v/init.py). Afterward, add the related information in `configs/backends.yaml`.
+For more video foundation models, you can add the inference code for new models under the `modules` directory. We recommend creating a new Python package for the new model within this directory and implementing the class in the package's `__init__.py` file (you can refer to `ModelscopeT2V` in `modules/modelscope_t2v/init.py`). Afterward, add the related information in `configs/backends.yaml`.
 
 <details>
   <summary><b>Example: FaceText2Video</b></summary>
@@ -139,7 +142,16 @@ tools:
 
 For more large language models, you can refer to `video_chatgpt.py`, and create a new file like `video_moss.py` or `video_stablelm.py` in the project root directory to implement support for other large language models.
 
-## Acknowledgement
+## ⏳ Ongoing
+
+> TODO: structure image
+
+- [x] Chatbot with video downstream works (video understanding, processing and generation)
+- [ ] Pretrained unified video model with in-context learning
+- [ ] Benchmark for emerging video tasks
+- [ ] Service including Gradio, Web and Docker
+
+## 👨‍🏫 Acknowledgement
 
 We appreciate the open source of the following projects:
 
@@ -152,8 +164,21 @@ We appreciate the open source of the following projects:
 [damo/text-to-video-synthesis](https://modelscope.cn/models/damo/text-to-video-synthesis/summary) &#8194;
 [bark](https://github.com/suno-ai/bark) &#8194;
 
-## Contact Information
+## 📩 Contact Information
 
-For help or issues using the _dolphin_, please submit a GitHub issue.
+For help or issues using the 🐬 dolphin, please submit a GitHub issue.
 
-For other communications, please contact Zehuan Huang (huanngzh@gmail.com).
+For other communications, please contact Zehuan Huang (huanngzh@gmail.com) or kaleido lab (kaleido.ailab@gmail.com). Welcome to follow us in Twitter (<a href="https://twitter.com/kaleido_lab" target="_blank">@kaleido_lab</a>).
+
+## 📎 Citation
+
+If you find this repository useful, please consider citing:
+
+```
+@misc{stable-dreamfusion,
+    Author = {Zehuan Huang, Haoran Feng, Enshen Zhou, Jiahua Lan, Chongzhi Zhang},
+    Year = {2023},
+    Note = {https://github.com/kaleido-lab/dolphin},
+    Title = {Dolphin: General Video Interaction Platform Based on LLMs}
+}
+```
