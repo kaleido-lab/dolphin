@@ -245,7 +245,7 @@ def get_parser():
     parser = argparse.ArgumentParser()
     parser.add_argument("--cfg", type=str, default="./configs/backends.yaml")
     parser.add_argument("--load", type=str, default=None)
-    parser.add_argument("--port", type=int, default=9000)
+    parser.add_argument("--port", type=int, default=7890)
     return parser
 
 
@@ -284,18 +284,24 @@ def main():
 
     # gradio frontend
     with gr.Blocks(css="#chatbot .overflow-y-auto{height:500px}") as demo:
+        gr.Markdown("<h3><center>Dolphin: Talk to Video</center></h3>")
+        gr.Markdown(
+            """**Dolphin** is a general video interaction platform based on large language models. See our [Project](https://github.com/kaleido-lab/dolphin).
+            """
+        )
+
         with gr.Row():
             lang = gr.Radio(
-                choices=["Chinese", "English"], value=None, label="Language"
+                choices=["Chinese", "English"], value="English", label="Language"
             )
             openai_api_key_textbox = gr.Textbox(
-                placeholder="Paste your OpenAI API key here to start Visual ChatGPT(sk-...) and press Enter ↵️",
+                placeholder="Paste your OpenAI API key here to start Dolphin(sk-...) and press Enter ↵️",
                 show_label=False,
                 lines=1,
                 type="password",
             )
 
-        chatbot = gr.Chatbot(elem_id="chatbot", label="Video ChatGPT")
+        chatbot = gr.Chatbot(elem_id="chatbot", label="dolphin")
         state = gr.State([])
 
         with gr.Row(visible=False) as input_raws:
@@ -310,6 +316,22 @@ def main():
                 clear = gr.Button("🔄 Clear")
             with gr.Column(scale=0.15, min_width=0):
                 btn = gr.UploadButton("🎥 Upload", file_types=["video"])
+
+        gr.Examples(
+            examples=[
+                "Generate a video describing a goldendoodle playing in a park by a lake",
+                "Make the video snowy",
+                "Can you detect the depth video of this video?",
+                "Can you use this pose video to generate an astronaut?",
+                "Describe this video",
+                "Replace the dog with a cat",
+                "Make it water-color painting",
+                "What clothes is the person wearing?",
+                "Please detect the pose of this video",
+                "What is the background?",
+            ],
+            inputs=txt,
+        )
 
         openai_api_key_textbox.submit(
             bot.init_agent,
