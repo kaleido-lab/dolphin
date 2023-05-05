@@ -83,13 +83,6 @@ tools:
       The input to this tool should be a string representing the paths of the videos. You should use commas to separate different videos."
     instance: MoviepyInterface
     func: concat_videos
-  - name: Video Overlay
-    desc: "useful when you want to overlay the videos /
-      like: Can you help me overlay video1 and video2/
-      The input to this tool should be a string representing the paths of the files. /
-      You should use commas to separate different paths."
-    instance: MoviepyInterface
-    func: video_overlay
   - name: Extract Audio From Video
     desc: "useful when you want to extract the audio from a video /
       like: Can you help me extract the audio from this video. /
@@ -153,8 +146,8 @@ tools:
     func: inference
   
   - name: Instruct Video Using Text
-    desc: "useful when you want to the style of the video to be like the text. /
-      like: like: make it look like a painting. or make it like a robot. /
+    desc: "useful when you want to use text to edit the video, like changing the style, replace something with something or edit background of the video. /
+      like: make it look like a painting. or make it like a robot. or make it snowy. or replace the dog with a cat. or switch the background into the sky. /
       The input to this tool should be a comma separated string of two, representing the video_path and the text. "
     instance: VideoPix2Pix
     func: inference

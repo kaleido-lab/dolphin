@@ -130,13 +130,6 @@ class MoviepyInterface:
         concatenate_videoclips(clips).write_videofile(new_video)
         return new_video
 
-    def video_overlay(self, inputs):
-        splits = inputs.split(",")
-        clips = [VideoFileClip(split) for split in splits]
-        new_video = get_new_video_name(splits[0], func_name="overlay-video")
-        clips_array(clips).write_videofile(new_video)
-        return new_video
-
     def extract_audio(self, inputs):
         video_path = inputs
         audio_path = generate_audio_name()
