@@ -11,11 +11,11 @@ from diffusers import (
     UNet2DConditionModel,
 )
 from diffusers.schedulers import EulerAncestralDiscreteScheduler, DDIMScheduler
-from .text_to_video_pipeline import TextToVideoPipeline
-from .utils import (
+from diffusers.pipelines.text_to_video_synthesis.pipeline_text_to_video_zero import (
     CrossFrameAttnProcessor,
-    pre_process,
 )
+from .text_to_video_pipeline import TextToVideoPipeline
+from .utils import pre_process
 
 from video_utils import prepare_video, create_video
 
@@ -44,9 +44,9 @@ class Text2Video_Zero_Model:
             ModelType.ControlNetPose: StableDiffusionControlNetPipeline,
             ModelType.ControlNetDepth: StableDiffusionControlNetPipeline,
         }
-        self.controlnet_attn_proc = CrossFrameAttnProcessor(unet_chunk_size=2)
-        self.pix2pix_attn_proc = CrossFrameAttnProcessor(unet_chunk_size=3)
-        self.text2video_attn_proc = CrossFrameAttnProcessor(unet_chunk_size=2)
+        self.controlnet_attn_proc = CrossFrameAttnProcessor(batch_size=2)
+        self.pix2pix_attn_proc = CrossFrameAttnProcessor(batch_size=3)
+        self.text2video_attn_proc = CrossFrameAttnProcessor(batch_size=2)
 
         self.pipe = None
         self.model_type = None
@@ -154,7 +154,9 @@ class CannyText2VideoModel(Text2Video_Zero_Model):
     def __init__(self, device, dtype, use_cf_attn=True, **kwargs):
         super().__init__(device, dtype, **kwargs)
 
-        controlnet = ControlNetModel.from_pretrained("lllyasviel/sd-controlnet-canny")
+        controlnet = ControlNetModel.from_pretrained(
+            "lllyasviel/sd-controlnet-canny", torch_dtype=dtype
+        )
         self.set_model(
             ModelType.ControlNetCanny,
             model_id="runwayml/stable-diffusion-v1-5",
@@ -228,7 +230,7 @@ class PoseText2VideoModel(Text2Video_Zero_Model):
         super().__init__(device, dtype, **kwargs)
 
         controlnet = ControlNetModel.from_pretrained(
-            "fusing/stable-diffusion-v1-5-controlnet-openpose"
+            "fusing/stable-diffusion-v1-5-controlnet-openpose", torch_dtype=dtype
         )
         self.set_model(
             ModelType.ControlNetPose,
@@ -298,7 +300,9 @@ class DepthText2VideoModel(Text2Video_Zero_Model):
     def __init__(self, device, dtype, use_cf_attn=True, **kwargs):
         super().__init__(device, dtype, **kwargs)
 
-        controlnet = ControlNetModel.from_pretrained("lllyasviel/sd-controlnet-depth")
+        controlnet = ControlNetModel.from_pretrained(
+            "lllyasviel/sd-controlnet-depth", torch_dtype=dtype
+        )
         self.set_model(
             ModelType.ControlNetDepth,
             model_id="runwayml/stable-diffusion-v1-5",
@@ -428,7 +432,9 @@ class Text2VideoModel(Text2Video_Zero_Model):
     ):
         super().__init__(device, dtype, **kwargs)
 
-        unet = UNet2DConditionModel.from_pretrained(model_name, subfolder="unet")
+        unet = UNet2DConditionModel.from_pretrained(
+            model_name, subfolder="unet", torch_dtype=dtype
+        )
         self.set_model(ModelType.Text2Video, model_id=model_name, unet=unet)
         self.pipe.scheduler = DDIMScheduler.from_config(self.pipe.scheduler.config)
         if use_cf_attn:
