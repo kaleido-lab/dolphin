@@ -84,7 +84,6 @@ class MoviepyInterface:
         print("Initializing MoviepyInterface")
 
     def intercept_fragments(self, inputs):
-        print(inputs)
         splits = inputs.split(",")
         image_path, begin, end = (
             splits[0],
