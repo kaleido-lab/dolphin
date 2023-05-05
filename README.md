@@ -4,19 +4,19 @@
 
 <div>
 <div align="center">
-    Zehuan Huang&emsp;
-    Haoran Feng&emsp;
-    Enshen Zhou&emsp;
-    Jiahua Lan&emsp;
-    Chongzhi Zhang&emsp;
+    Zehuan Huang<sup>1</sup>&emsp;
+    Haoran Feng<sup>1</sup>&emsp;
+    Enshen Zhou<sup>1</sup>&emsp;
+    Jiahua Lan<sup>1</sup>&emsp;
+    Chongzhi Zhang<sup>2</sup>&emsp;
     </br>
-    <a href='https://lucassheng.github.io/' target='_blank'>Lu Sheng</a>&emsp;
-    <a href='https://liuziwei7.github.io/' target='_blank'>Ziwei Liu</a>&emsp;
-    <a href='https://amandajshao.github.io/' target='_blank'>Jing Shao</a>
+    <a href='https://lucassheng.github.io/' target='_blank'>Lu Sheng</a><sup>1</sup>&emsp;
+    <a href='https://liuziwei7.github.io/' target='_blank'>Ziwei Liu</a><sup>2</sup>&emsp;
+    <a href='https://amandajshao.github.io/' target='_blank'>Jing Shao</a><sup>3</sup>
 </div>
 <div>
 <div align="center">
-    Beihang University, Nanyang Technological University
+    <sup>1</sup>Beihang University, <sup>2</sup>Nanyang Technological University
 </div>
 
 # dolphin
