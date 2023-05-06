@@ -33,7 +33,7 @@ Dolphin is a general video interaction platform based on large language models. 
 
 We are continuously improving 🐬 dolphin. Stay tuned for updates!
 
-> Online demo is coming soon!
+> Stable online demo is coming soon! See **About** in Github for the temporary demo URL.
 
 ## 📽️ Demo
 
