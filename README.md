@@ -173,8 +173,8 @@ For other communications, please contact Zehuan Huang (huanngzh@gmail.com) or ka
 If you find this repository useful, please consider citing:
 
 ```
-@misc{stable-dreamfusion,
-    Author = {Zehuan Huang, Haoran Feng, Enshen Zhou, Jiahua Lan, Chongzhi Zhang},
+@misc{dolphin,
+    Author = {Zehuan Huang, Haoran Feng, Chongzhi Zhang, Lu Sheng, Ziwei Liu, Jing Shao},
     Year = {2023},
     Note = {https://github.com/kaleido-lab/dolphin},
     Title = {Dolphin: General Video Interaction Platform Based on LLMs}
