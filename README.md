@@ -19,13 +19,13 @@
 
 # dolphin
 
-<!-- <a src="https://img.shields.io/badge/%F0%9F%A4%97-Open%20in%20Spaces-blue" href="">
+<!-- <a src="https://img.shields.io/badge/%F0%9F%A4%97-Open%20in%20Spaces-blue" href="" target="_blank">
     <img src="https://img.shields.io/badge/%F0%9F%A4%97-Open%20in%20Spaces-blue" alt="Open in Huggingface">
 </a>
-<a src="https://img.shields.io/badge/GPU%20Demo-Open-green?logo=alibabacloud" href="">
+<a src="https://img.shields.io/badge/GPU%20Demo-Open-green?logo=alibabacloud" href="" target="_blank">
     <img src="https://img.shields.io/badge/GPU%20Demo-Open-green?logo=alibabacloud"> 
 </a> -->
-<a src="https://img.shields.io/twitter/follow/kaleido_lab?style=social" href="https://twitter.com/kaleido_lab">
+<a src="https://img.shields.io/twitter/follow/kaleido_lab?style=social" href="https://twitter.com/kaleido_lab" target="_blank">
   <img src="https://img.shields.io/twitter/follow/kaleido_lab?style=social">
 </a>
 
@@ -37,7 +37,9 @@ We are continuously improving 🐬 dolphin. Stay tuned for updates!
 
 ## 📽️ Demo
 
-[![dolphin_play_cover](https://user-images.githubusercontent.com/78398294/236398299-050439e4-b870-44f5-8341-db87ca849748.png)](https://www.youtube.com/watch?v=d8giiMAWMLc "Dolphin, a general video interaction platform based on LLMs, from BUAA & NTU")
+<a href="https://www.youtube.com/watch?v=d8giiMAWMLc" target="_blank">
+  <img src="https://user-images.githubusercontent.com/78398294/236398299-050439e4-b870-44f5-8341-db87ca849748.png" alt="Dolphin, a general video interaction platform based on LLMs, from BUAA & NTU">
+</a>
 
 ## 🔥 Updates
 
