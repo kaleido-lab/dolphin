@@ -4,31 +4,27 @@
 
 <div>
 <div align="center">
-    Zehuan Huang<sup>1</sup>&emsp;
-    Haoran Feng<sup>1</sup>&emsp;
-    Enshen Zhou<sup>1</sup>&emsp;
-    Jiahua Lan<sup>1</sup>&emsp;
-    Chongzhi Zhang<sup>2</sup>&emsp;
+    Zehuan Huang&emsp;
+    Haoran Feng&emsp;
+    Chongzhi Zhang
     </br>
-    <a href='https://lucassheng.github.io/' target='_blank'>Lu Sheng</a><sup>1</sup>&emsp;
-    <a href='https://liuziwei7.github.io/' target='_blank'>Ziwei Liu</a><sup>2</sup>&emsp;
-    <a href='https://amandajshao.github.io/' target='_blank'>Jing Shao</a><sup>3</sup>
+    <a href='https://lucassheng.github.io/' target='_blank'>Lu Sheng</a>&emsp;
+    <a href='https://liuziwei7.github.io/' target='_blank'>Ziwei Liu</a>&emsp;
+    <a href='https://amandajshao.github.io/' target='_blank'>Jing Shao</a>
 </div>
 <div>
 <div align="center">
-    <sup>1</sup>Beihang University, <sup>2</sup>Nanyang Technological University
+    Beihang University, Nanyang Technological University
 </div>
 
 # dolphin
 
-> TODO: online demo
-
-<a src="https://img.shields.io/badge/%F0%9F%A4%97-Open%20in%20Spaces-blue" href="">
+<!-- <a src="https://img.shields.io/badge/%F0%9F%A4%97-Open%20in%20Spaces-blue" href="">
     <img src="https://img.shields.io/badge/%F0%9F%A4%97-Open%20in%20Spaces-blue" alt="Open in Huggingface">
 </a>
 <a src="https://img.shields.io/badge/GPU%20Demo-Open-green?logo=alibabacloud" href="">
     <img src="https://img.shields.io/badge/GPU%20Demo-Open-green?logo=alibabacloud"> 
-</a>
+</a> -->
 <a src="https://img.shields.io/twitter/follow/kaleido_lab?style=social" href="https://twitter.com/kaleido_lab">
   <img src="https://img.shields.io/twitter/follow/kaleido_lab?style=social">
 </a>
@@ -37,13 +33,15 @@ Dolphin is a general video interaction platform based on large language models. 
 
 We are continuously improving 🐬 dolphin. Stay tuned for updates!
 
+> Online demo is coming soon!
+
 ## 📽️ Demo
 
-[![Dolphin, a general video interaction platform based on LLMs, from BUAA & NTU](https://res.cloudinary.com/marcomontalbano/image/upload/v1683180108/video_to_markdown/images/youtube--IB1qrhVG94s-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://www.youtube.com/watch?v=IB1qrhVG94s "Dolphin, a general video interaction platform based on LLMs, from BUAA & NTU")
+[![dolphin_play_cover](https://user-images.githubusercontent.com/78398294/236398299-050439e4-b870-44f5-8341-db87ca849748.png)](https://www.youtube.com/watch?v=d8giiMAWMLc "Dolphin, a general video interaction platform based on LLMs, from BUAA & NTU")
 
 ## 🔥 Updates
 
-- 2023/05/05: Code release & Online Demo
+- 2023/05/06: Code release & Online Demo
 
   - Video understanding: Q&A about the video.
   - Video processing: Basic functions such as trimming video, adding subtitles, extracting audio, and adding audio using [moviepy](https://github.com/Zulko/moviepy). Video to pose/depth/canny also included.
@@ -51,7 +49,7 @@ We are continuously improving 🐬 dolphin. Stay tuned for updates!
 
 ## 💬 Example
 
-> TODO: example video
+https://user-images.githubusercontent.com/78398294/236603247-b7381154-743c-4262-ad30-75f11e34a91d.mp4
 
 ## 🔨 Quick Start
 
@@ -144,14 +142,12 @@ For more large language models, you can refer to `video_chatgpt.py`, and create 
 
 ## ⏳ Ongoing
 
-> TODO: structure image
-
 - [x] Chatbot with video downstream works (video understanding, processing and generation)
 - [ ] Pretrained unified video model with in-context learning
 - [ ] Benchmark for emerging video tasks
-- [ ] Service including Gradio, Web and Docker
+- [ ] Service including Gradio, Web, API and Docker
 
-## 👨‍🏫 Acknowledgement
+## 🤝 Acknowledgement
 
 We appreciate the open source of the following projects:
 
@@ -162,7 +158,7 @@ We appreciate the open source of the following projects:
 [MoviePy](https://github.com/Zulko/moviepy) &#8194; 
 [Text2Video-Zero](https://github.com/Picsart-AI-Research/Text2Video-Zero) &#8194;
 [damo/text-to-video-synthesis](https://modelscope.cn/models/damo/text-to-video-synthesis/summary) &#8194;
-[bark](https://github.com/suno-ai/bark) &#8194;
+[bark](https://github.com/suno-ai/bark)
 
 ## 📩 Contact Information
 
