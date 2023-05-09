@@ -1,5 +1,5 @@
 <p align="center" width="100%">
-<img src="https://user-images.githubusercontent.com/78398294/236116868-00801805-5cbf-40d1-89a1-f848a15b1deb.png"  width="80%" height="80%">
+<img src="https://github-production-user-asset-6210df.s3.amazonaws.com/78398294/237149157-ab45a2aa-7b86-444b-92e0-099eb0289890.png" width="80%" height="80%">
 </p>
 
 <div>
@@ -17,7 +17,7 @@
     Beihang University, Nanyang Technological University
 </div>
 
-# dolphin
+# Dolphin
 
 <!-- <a src="https://img.shields.io/badge/%F0%9F%A4%97-Open%20in%20Spaces-blue" href="" target="_blank">
     <img src="https://img.shields.io/badge/%F0%9F%A4%97-Open%20in%20Spaces-blue" alt="Open in Huggingface">
@@ -31,7 +31,7 @@
 
 Dolphin is a general video interaction platform based on large language models. Our team is trying to build a chatbot for video understanding, processing and generation.
 
-We are continuously improving 🐬 dolphin. Stay tuned for updates!
+We are continuously improving 🐬 Dolphin. Stay tuned for updates!
 
 > Stable online demo is coming soon! See **About** in Github for the [temporary demo URL](https://8b54e2428dceb52566.gradio.live).
 
@@ -70,7 +70,7 @@ cd dolphin
 pip install -r requirements.txt
 ```
 
-To start 🐬 dolphin, you can specify the GPU/CPU assignment by `--load`, the parameter indicates which Video Foundation Model to use and where it will be loaded to. The model and device are separated by underline `_`, while the different models are separated by comma `,`. The available Video Foundation Models can be found in the following table or `configs/backends.yaml`.
+To start 🐬 Dolphin, you can specify the GPU/CPU assignment by `--load`, the parameter indicates which Video Foundation Model to use and where it will be loaded to. The model and device are separated by underline `_`, while the different models are separated by comma `,`. The available Video Foundation Models can be found in the following table or `configs/backends.yaml`.
 
 For example, if you want to load VideoCaptioning to cuda:0 and MoviepyInterface to cpu, you can use: `VideoCaptioning_cuda:0,MoviepyInterface_cpu`.
 
@@ -164,7 +164,7 @@ We appreciate the open source of the following projects:
 
 ## 📩 Contact Information
 
-For help or issues using the 🐬 dolphin, please submit a GitHub issue.
+For help or issues using the 🐬 Dolphin, please submit a GitHub issue.
 
 For other communications, please contact Zehuan Huang (huanngzh@gmail.com) or kaleido lab (kaleido.ailab@gmail.com). Welcome to follow us in Twitter (<a href="https://twitter.com/kaleido_lab" target="_blank">@kaleido_lab</a>).
 
