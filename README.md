@@ -144,6 +144,8 @@ For more large language models, you can refer to `video_chatgpt.py`, and create 
 
 ## ⏳ Ongoing
 
+![framework](https://github.com/kaleido-lab/dolphin/assets/78398294/b6399f91-d2cb-4a52-b98b-ea61edd816da)
+
 - [x] Chatbot with video downstream works (video understanding, processing and generation)
 - [ ] Pretrained unified video model with in-context learning
 - [ ] Benchmark for emerging video tasks
