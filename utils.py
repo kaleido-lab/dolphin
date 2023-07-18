@@ -53,6 +53,9 @@ def generate_video_name_mp4():
 def generate_audio_name():
     return os.path.join("video", str(uuid.uuid4())[:8] + ".wav")
 
+def generate_image_name():
+    return os.path.join("image", str(uuid.uuid4())[:8] + ".png")
+
 
 def get_new_uuid():
     return str(uuid.uuid4())[:8]

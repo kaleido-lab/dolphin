@@ -31,9 +31,9 @@
 
 Dolphin is a general video interaction platform based on large language models. Our team is trying to build a chatbot for video understanding, processing and generation.
 
-We are continuously improving 🐬 Dolphin. Stay tuned for updates!
+The project 🐬 Dolphin is still under construction, we will continue to update it and welcome contributions/pull requests from the community.
 
-> Stable online demo is coming soon! See **About** in Github for the [temporary demo URL](https://8b54e2428dceb52566.gradio.live).
+> Stable online demo is coming soon! See **About** in Github for the [temporary demo URL](https://c5c9eb5ba27f3865bf.gradio.live).
 
 ## 📽️ Demo
 
@@ -143,6 +143,8 @@ tools:
 For more large language models, you can refer to `video_chatgpt.py`, and create a new file like `video_moss.py` or `video_stablelm.py` in the project root directory to implement support for other large language models.
 
 ## ⏳ Ongoing
+
+![framework](https://github.com/kaleido-lab/dolphin/assets/78398294/b6399f91-d2cb-4a52-b98b-ea61edd816da)
 
 - [x] Chatbot with video downstream works (video understanding, processing and generation)
 - [ ] Pretrained unified video model with in-context learning

@@ -46,10 +46,17 @@ model_zoos:
     target: modules.modelscope_t2v.ModelscopeT2V
     params:
       device: cuda:3
+
+  SadTalker:
+    target: modules.sadtalker.Sadtalker
   
   # Audio Generation
   Text2Audio:
     target: modules.bark.Text2Audio
+
+  # Image Generation
+  Text2Image:
+    target: modules.stable_diffusion.Text2Image
 
 tools:
   # Video Understanding
@@ -152,6 +159,14 @@ tools:
     instance: VideoPix2Pix
     func: inference
 
+  - name: Generate Talker Video
+    decs: "userful when you want to use an image and an audio to generate a simulated human portrait speaking video. /
+      like: can you generate a video using this image and this audio to generate a simulated human portrait speaking video. /
+      The input to this tool should be a comma separated string of two, representing the audio_path and the image_path."
+    instance: Sadtalker
+    func: inference
+
+
   # Audio Generation
   - name: Generate audio based on text
     desc: "useful when you want to generate audio based on text. /
@@ -166,3 +181,12 @@ tools:
       The input to this tool should be a string, representing the content of the text."
     instance: Text2Audio
     func: text2music
+
+  
+  # Image Generation
+  - name: Generate image based on text
+  - desc: "useful when you want to generate an image based on text. /
+      like: can you generate an image based on the text 'An astronaut riding a horse.' /
+      The input to this tool should be a string, representing the content of the text."
+    instance: Text2Image
+    func: image_generation
