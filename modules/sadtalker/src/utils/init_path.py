@@ -1,6 +1,8 @@
 import os
 import glob
 
+from torch.hub import download_url_to_file
+
 def init_path(checkpoint_dir, config_dir, size=512, old_version=False, preprocess='crop'):
 
     print("checkpoint_dir is:", checkpoint_dir)
@@ -16,23 +18,42 @@ def init_path(checkpoint_dir, config_dir, size=512, old_version=False, preproces
         }
 
         use_safetensor = False
+    
     elif len(glob.glob(os.path.join(checkpoint_dir, '*.safetensors'))):
         print('using safetensor as default')
         sadtalker_paths = {
             "checkpoint":os.path.join(checkpoint_dir, 'SadTalker_V0.0.2_'+str(size)+'.safetensors'),
             }
         use_safetensor = True
+    
     else:
-        print("WARNING: The new version of the model will be updated by safetensor, you may need to download it mannully. We run the old version of the checkpoint this time!")
-        use_safetensor = False
+        print(f"Begin to download models to {checkpoint_dir}...")
+        os.makedirs(checkpoint_dir, exist_ok=True)
         
+        checkpoint_urls = ["https://github.com/OpenTalker/SadTalker/releases/download/v0.0.2-rc/mapping_00109-model.pth.tar",
+                           "https://github.com/OpenTalker/SadTalker/releases/download/v0.0.2-rc/mapping_00229-model.pth.tar",
+                           "https://github.com/OpenTalker/SadTalker/releases/download/v0.0.2-rc/SadTalker_V0.0.2_256.safetensors",
+                           "https://github.com/OpenTalker/SadTalker/releases/download/v0.0.2-rc/SadTalker_V0.0.2_512.safetensors"]
+        
+        for checkpoint_url in checkpoint_urls:
+            download_url_to_file(checkpoint_url, checkpoint_dir, hash_prefix=None, progress=True)
+        
+        print('using safetensor as default')
         sadtalker_paths = {
-                'wav2lip_checkpoint' : os.path.join(checkpoint_dir, 'wav2lip.pth'),
-                'audio2pose_checkpoint' : os.path.join(checkpoint_dir, 'auido2pose_00140-model.pth'),
-                'audio2exp_checkpoint' : os.path.join(checkpoint_dir, 'auido2exp_00300-model.pth'),
-                'free_view_checkpoint' : os.path.join(checkpoint_dir, 'facevid2vid_00189-model.pth.tar'),
-                'path_of_net_recon_model' : os.path.join(checkpoint_dir, 'epoch_20.pth')
-        }
+            "checkpoint":os.path.join(checkpoint_dir, 'SadTalker_V0.0.2_'+str(size)+'.safetensors'),
+            }
+        
+        use_safetensor = True
+        # print("WARNING: The new version of the model will be updated by safetensor, you may need to download it mannully. We run the old version of the checkpoint this time!")
+        # use_safetensor = False
+        
+        # sadtalker_paths = {
+        #         'wav2lip_checkpoint' : os.path.join(checkpoint_dir, 'wav2lip.pth'),
+        #         'audio2pose_checkpoint' : os.path.join(checkpoint_dir, 'auido2pose_00140-model.pth'),
+        #         'audio2exp_checkpoint' : os.path.join(checkpoint_dir, 'auido2exp_00300-model.pth'),
+        #         'free_view_checkpoint' : os.path.join(checkpoint_dir, 'facevid2vid_00189-model.pth.tar'),
+        #         'path_of_net_recon_model' : os.path.join(checkpoint_dir, 'epoch_20.pth')
+        # } 
 
     sadtalker_paths['dir_of_BFM_fitting'] = os.path.join(config_dir) # , 'BFM_Fitting'
     sadtalker_paths['audio2pose_yaml_path'] = os.path.join(config_dir, 'auido2pose.yaml')

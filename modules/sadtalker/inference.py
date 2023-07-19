@@ -19,7 +19,7 @@ def main(args):
 
     pic_path = args.source_image
     audio_path = args.driven_audio
-    save_dir = os.path.join(args.result_dir) # , strftime("%Y_%m_%d_%H.%M.%S")
+    save_dir = os.path.join(args.result_dir)
     os.makedirs(save_dir, exist_ok=True)
     pose_style = args.pose_style
     device = args.device
