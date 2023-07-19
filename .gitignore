@@ -9,6 +9,6 @@ __pycache__/
 *.pt
 *.bin
 *.ckpt
-
+*.safetensors
 video
 logs/
