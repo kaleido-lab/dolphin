@@ -53,6 +53,9 @@ model_zoos:
   # Audio Generation
   Text2Audio:
     target: modules.bark.Text2Audio
+  
+  VoiceBarkClone:
+    target: modules.bark_voice_clone.BarkVoiceClone
 
   # Image Generation
   Text2Image:
@@ -181,6 +184,13 @@ tools:
       The input to this tool should be a string, representing the content of the text."
     instance: Text2Audio
     func: text2music
+
+  - name: Using simulated human voices to generate corresponding audio based on text
+    desc: "useful when you want to generate audio based on text using simulated human voices. /
+      like: can you generate an audio based on the text 'Hello, my name is Suno. I like reading books in my free time.' using simulated human voices. /
+      The input to this tool should be a string, representing the content of the text."
+    instance: BarkVoiceClone
+    func: inference
 
   
   # Image Generation

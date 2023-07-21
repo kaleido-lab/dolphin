@@ -13,3 +13,5 @@ __pycache__/
 image
 video
 logs/
+modules/bark_voice_clone/pretrain_work_dir
+*.wav
