@@ -80,9 +80,6 @@ Some starting commands are as follows.
 # Advice for CPU Users
 python video_chatgpt.py --load VideoCaptioning_cpu,ImageCaptioning_cpu,ModelscopeT2V_cpu
 
-# Advice for 1 Tesla T4 15GB
-python video_chatgpt.py --load "VideoCaptioning_cuda:0,ImageCaptioning_cuda:0,ModelscopeT2V_cuda:0"
-
 # Advice for 4 Tesla V100 32GB (Full usage)
 # You can specify the device where each model is loaded in `configs/backend.yaml`
 python video_chatgpt.py
