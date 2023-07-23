@@ -47,14 +47,14 @@ model_zoos:
     params:
       device: cuda:3
 
-  SadTalker:
+  Sadtalker:
     target: modules.sadtalker.Sadtalker
   
   # Audio Generation
   Text2Audio:
     target: modules.bark.Text2Audio
   
-  VoiceBarkClone:
+  BarkVoiceClone:
     target: modules.bark_voice_clone.BarkVoiceClone
 
   # Image Generation
@@ -63,13 +63,20 @@ model_zoos:
 
 tools:
   # Video Understanding
-  # - name: Get Video Description
-  #   desc: "useful when you want to know what the video shows or describes. /
-  #     like: Can you tell me what the video tells about? /
-  #     The input to this tool should be a string, representing the video_path. "
-  #   instance: VideoCaptioning # corresponds to keys of model_zoos above
-  #   func: inference # func name of class
-    
+  - name: Get Video Description
+    desc: "useful when you want to know what the video shows or describes. /
+      like: Can you tell me what the video tells about? /
+      The input to this tool should be a string, representing the video_path. "
+    instance: VideoCaptioning # corresponds to keys of model_zoos above
+    func: inference # func name of class
+  
+  - name: Get Image Description
+    desc: "useful when you want to know what the image shows or describes. /
+      like: Can you tell me what the video tells about? /
+      The input to this tool should be a string, representing the image_path. "
+    instance: ImageCaptioning
+    func: image_captioning
+
   # Video Processing
   # MoviePy
   - name: Get Video Subclip
@@ -195,7 +202,7 @@ tools:
   
   # Image Generation
   - name: Generate image based on text
-  - desc: "useful when you want to generate an image based on text. /
+    desc: "useful when you want to generate an image based on text. /
       like: can you generate an image based on the text 'An astronaut riding a horse.' /
       The input to this tool should be a string, representing the content of the text."
     instance: Text2Image

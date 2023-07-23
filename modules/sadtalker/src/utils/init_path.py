@@ -3,6 +3,7 @@ import glob
 
 from torch.hub import download_url_to_file
 
+
 def init_path(checkpoint_dir, config_dir, size=512, old_version=False, preprocess='crop'):
 
     print("checkpoint_dir is:", checkpoint_dir)

@@ -5,6 +5,7 @@ from skimage import io, img_as_float32, transform
 import torch
 import scipy.io as scio
 
+
 def get_facerender_data(coeff_path, pic_path, first_coeff_path, audio_path, 
                         batch_size, input_yaw_list=None, input_pitch_list=None, input_roll_list=None, 
                         expression_scale=1.0, still_mode = False, preprocess='crop', size = 256):

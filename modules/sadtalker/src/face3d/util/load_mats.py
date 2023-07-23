@@ -7,6 +7,7 @@ from scipy.io import loadmat, savemat
 from array import array
 import os.path as osp
 
+
 # load expression basis
 def LoadExpBasis(bfm_folder='BFM'):
     n_vertex = 53215
@@ -86,8 +87,6 @@ def transferBFM09(bfm_folder='BFM'):
     meantex = meantex[index_shape, :]
     meantex = np.reshape(meantex, [1, -1])
 
-    # other info contains triangles, region used for computing photometric loss,
-    # region used for skin texture regularization, and 68 landmarks index etc.
     other_info = loadmat(osp.join(bfm_folder, 'facemodel_info.mat'))
     frontmask2_idx = other_info['frontmask2_idx']
     skinmask = other_info['skinmask']

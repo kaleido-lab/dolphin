@@ -8,6 +8,7 @@ from torch.nn import Linear, Conv2d, BatchNorm1d, BatchNorm2d, PReLU, Sequential
 import torch
 
 
+
 class Flatten(Module):
     def forward(self, x):
         return x.view(x.size(0), -1)

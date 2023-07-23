@@ -16,6 +16,7 @@ from facexlib.alignment import landmark_98_to_68
 import numpy as np
 from PIL import Image
 
+
 class Preprocesser:
     def __init__(self, device='cuda'):
         self.predictor = KeypointExtractor(device)

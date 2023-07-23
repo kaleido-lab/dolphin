@@ -13,6 +13,7 @@ warnings.filterwarnings("ignore", category=np.VisibleDeprecationWarning)
 warnings.filterwarnings("ignore", category=FutureWarning) 
 
 
+
 # calculating least square problem for image alignment
 def POS(xp, x):
     npts = xp.shape[1]

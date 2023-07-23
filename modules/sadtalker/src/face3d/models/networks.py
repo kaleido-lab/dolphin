@@ -18,6 +18,7 @@ from typing import Type, Any, Callable, Union, List, Optional
 from .arcface_torch.backbones import get_model
 from kornia.geometry import warp_affine
 
+
 def resize_n_crop(image, M, dsize=112):
     # image: (b, c, h, w)
     # M   :  (b, 2, 3)

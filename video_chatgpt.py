@@ -128,6 +128,8 @@ class ConversationBot:
         print(f"Initializing VideoChatGPT, load_cfg={cfg}")
 
         # instantiate model zoos
+        for k, v in cfg.model_zoos.items():
+            print("k:", k, "v:", v)
         self.models = {
             k: utils.instantiate_from_config(v) for k, v in cfg.model_zoos.items()
         }
@@ -263,6 +265,7 @@ def main():
             e.split("_")[0].strip(): e.split("_")[1].strip()
             for e in args.load.split(",")
         }
+        
         diff_set = set(load_dict.keys()).difference(set(dict(cfg.model_zoos).keys()))
         if len(diff_set) > 0:
             raise ValueError(
@@ -270,14 +273,18 @@ def main():
             )
 
         for key in dict(cfg.model_zoos).keys():
+            
             if key in load_dict:
                 if "params" in cfg.model_zoos[key]:
                     cfg.model_zoos[key].params.device = load_dict[key]
+            
             else:
                 del cfg.model_zoos[key]
+                
                 to_dels = [
                     i for i, e in enumerate(list(cfg.tools)) if e.instance == key
                 ]
+                
                 for index in sorted(to_dels, reverse=True):
                     del cfg.tools[index]
 
