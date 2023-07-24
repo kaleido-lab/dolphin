@@ -1,4 +1,4 @@
-from modules.sadtalker import Sadtalker
+from modules.shap_e import Shap_E
 
-st = Sadtalker()
-st.inference("audio/ac9fc7da.wav,image/test.png")
+shap_e = Shap_E()
+shap_e.inference("A spaceship")

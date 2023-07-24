@@ -50,6 +50,9 @@ model_zoos:
   Sadtalker:
     target: modules.sadtalker.Sadtalker
   
+  Shap_E:
+    target: modules.shap_e.Shap_E
+  
   # Audio Generation
   Text2Audio:
     target: modules.bark.Text2Audio
@@ -169,6 +172,13 @@ tools:
     instance: VideoPix2Pix
     func: inference
 
+  - name: Generate a 3D modeling video of an object based on the text description
+    desc: "useful when you want to use text to generate a 3D modeling video of an object./
+      like: can you generate a 3D model of the corresponding object based on my description?./
+      The input to this tool should be a string, representing the content of the text."
+    instance: Shap_E
+    func: inference
+
   - name: Generate Talker Video
     decs: "userful when you want to use an image and an audio to generate a simulated human portrait speaking video. /
       like: can you generate a video using this image and this audio to generate a simulated human portrait speaking video. /
@@ -207,3 +217,5 @@ tools:
       The input to this tool should be a string, representing the content of the text."
     instance: Text2Image
     func: image_generation
+
+

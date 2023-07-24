@@ -106,6 +106,7 @@ Thought: Do I need to use a tool? {agent_scratchpad}
 os.makedirs("video", exist_ok=True)
 os.makedirs("image", exist_ok=True)
 os.makedirs("audio", exist_ok=True)
+os.makedirs("modeling", exist_ok=True)
 
 def cut_dialogue_history(history_memory, keep_last_n_words=500):
     if history_memory is None or len(history_memory) == 0:
