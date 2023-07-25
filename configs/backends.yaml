@@ -49,9 +49,13 @@ model_zoos:
 
   Sadtalker:
     target: modules.sadtalker.Sadtalker
+    params:
+      device: cuda:3
   
   Shap_E:
     target: modules.shap_e.Shap_E
+    params:
+      device: cuda:3
   
   # Audio Generation
   Text2Audio:

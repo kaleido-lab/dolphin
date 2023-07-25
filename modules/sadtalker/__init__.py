@@ -2,7 +2,7 @@ from .inference import main
 import torch
 
 class Sadtalker:
-    def __init__(self):
+    def __init__(self, device):
         self.driven_audio = './image/bus_chinese.wav'
         self.source_image = './image/art_0.png'
         self.ref_eyeblink = None
@@ -36,11 +36,8 @@ class Sadtalker:
         self.camera_d = 10.0
         self.z_near = 5.0
         self.z_far = 15.0
-
-        if torch.cuda.is_available() and not self.cpu:
-            self.device = "cuda"
-        else:
-            self.device = "cpu"
+        
+        self.device = device
 
     def inference(self, inputs):
         splits = inputs.split(",")

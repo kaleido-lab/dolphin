@@ -4,11 +4,11 @@ from .shape_gen import ShapE
 from tqdm import tqdm
 
 class Shap_E:
-    def __init__(self):
+    def __init__(self, device):
         self.cond_type = "t2m"
         self.cache_dir = "modules/shap_e/cache_dir"
         self.output_dir = "video"
-        self.device = "cuda" if torch.cuda.is_available() else "cpu"
+        self.device = device
         
     def inference(self, prompt):
         self.cond = prompt
