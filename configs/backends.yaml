@@ -46,20 +46,44 @@ model_zoos:
     target: modules.modelscope_t2v.ModelscopeT2V
     params:
       device: cuda:3
+
+  Sadtalker:
+    target: modules.sadtalker.Sadtalker
+    params:
+      device: cuda:3
+  
+  Shap_E:
+    target: modules.shap_e.Shap_E
+    params:
+      device: cuda:3
   
   # Audio Generation
   Text2Audio:
     target: modules.bark.Text2Audio
+  
+  BarkVoiceClone:
+    target: modules.bark_voice_clone.BarkVoiceClone
+
+  # Image Generation
+  Text2Image:
+    target: modules.stable_diffusion.Text2Image
 
 tools:
   # Video Understanding
-  # - name: Get Video Description
-  #   desc: "useful when you want to know what the video shows or describes. /
-  #     like: Can you tell me what the video tells about? /
-  #     The input to this tool should be a string, representing the video_path. "
-  #   instance: VideoCaptioning # corresponds to keys of model_zoos above
-  #   func: inference # func name of class
-    
+  - name: Get Video Description
+    desc: "useful when you want to know what the video shows or describes. /
+      like: Can you tell me what the video tells about? /
+      The input to this tool should be a string, representing the video_path. "
+    instance: VideoCaptioning # corresponds to keys of model_zoos above
+    func: inference # func name of class
+  
+  - name: Get Image Description
+    desc: "useful when you want to know what the image shows or describes. /
+      like: Can you tell me what the video tells about? /
+      The input to this tool should be a string, representing the image_path. "
+    instance: ImageCaptioning
+    func: image_captioning
+
   # Video Processing
   # MoviePy
   - name: Get Video Subclip
@@ -152,6 +176,21 @@ tools:
     instance: VideoPix2Pix
     func: inference
 
+  - name: Generate a 3D modeling video of an object based on the text description
+    desc: "useful when you want to use text to generate a 3D modeling video of an object./
+      like: can you generate a 3D model of the corresponding object based on my description?./
+      The input to this tool should be a string, representing the content of the text."
+    instance: Shap_E
+    func: inference
+
+  - name: Generate Talker Video
+    decs: "userful when you want to use an image and an audio to generate a simulated human portrait speaking video. /
+      like: can you generate a video using this image and this audio to generate a simulated human portrait speaking video. /
+      The input to this tool should be a comma separated string of two, representing the audio_path and the image_path."
+    instance: Sadtalker
+    func: inference
+
+
   # Audio Generation
   - name: Generate audio based on text
     desc: "useful when you want to generate audio based on text. /
@@ -166,3 +205,21 @@ tools:
       The input to this tool should be a string, representing the content of the text."
     instance: Text2Audio
     func: text2music
+
+  - name: Using simulated human voices to generate corresponding audio based on text
+    desc: "useful when you want to generate audio based on text using simulated human voices. /
+      like: can you generate an audio based on the text 'Hello, my name is Suno. I like reading books in my free time.' using simulated human voices. /
+      The input to this tool should be a string, representing the content of the text."
+    instance: BarkVoiceClone
+    func: inference
+
+  
+  # Image Generation
+  - name: Generate image based on text
+    desc: "useful when you want to generate an image based on text. /
+      like: can you generate an image based on the text 'An astronaut riding a horse.' /
+      The input to this tool should be a string, representing the content of the text."
+    instance: Text2Image
+    func: image_generation
+
+

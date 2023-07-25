@@ -9,6 +9,9 @@ __pycache__/
 *.pt
 *.bin
 *.ckpt
-
+*.safetensors
+image
 video
 logs/
+modules/bark_voice_clone/pretrain_work_dir
+*.wav
